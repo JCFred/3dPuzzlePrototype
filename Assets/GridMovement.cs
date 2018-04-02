@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GridMovement : MonoBehaviour {
-
+public class GridMovement : MonoBehaviour 
+{
+	public bool turn = false;
+	
 	GameObject[] tiles;
 
 	public bool moving = false;
@@ -19,6 +21,9 @@ public class GridMovement : MonoBehaviour {
 	public void Init() 
 	{
 		tiles = GameObject.FindGameObjectsWithTag("tile");
+
+		//add this unit to the teams list
+		TurnManager.AddUnit(this);
 	}
 
 	public void GetCurrentTile () 
@@ -67,14 +72,17 @@ public class GridMovement : MonoBehaviour {
 
 	}
 
-	public void Move () {
-		if (Vector3.Distance (transform.position, targetPosition) >= 0.05f) {
+	public void Move () 
+	{
+		if (Vector3.Distance (transform.position, targetPosition) >= 0.05f) 
+		{
 			transform.position += velocity * Time.deltaTime;
 		} 
 		else 
 		{
 			transform.position = targetPosition;
 			moving = false;
+			TurnManager.EndTurn();
 		}
 	}
 
@@ -88,6 +96,16 @@ public class GridMovement : MonoBehaviour {
 	{
 		velocity = direction * moveSpeed;
 
+	}
+
+	public void BeginTurn () 
+	{
+		turn = true;
+	}
+
+	public void EndTurn () 
+	{
+		turn = false;
 	}
 
 }

@@ -6,6 +6,7 @@ public class Tile : MonoBehaviour {
 
 	public bool walkable = true;
 	public bool current = false;
+	public bool occupied = false;
 
 	public Tile tileUp = null;
 	public Tile tileDown = null;
@@ -23,7 +24,15 @@ public class Tile : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (current) {
+			GetComponent<Renderer> ().material.color = Color.blue;
+		} 
+		else 
+		{
+			GetComponent<Renderer> ().material.color = Color.white;
+		}
+
+		OccupiedCheck ();
 	}
 
 	public void Reset () 
@@ -73,4 +82,27 @@ public class Tile : MonoBehaviour {
 		}
 		return null;
 	}
+
+	public void OccupiedCheck () {
+		RaycastHit hit;
+		if (Physics.Raycast (transform.position, Vector3.up, out hit, 1)) {
+			occupied = true;
+		} 
+		else 
+		{
+			occupied = false;
+		}
+
+	}
+
+	public bool AmIOccupied () {
+		if (occupied) {
+			return true;
+		} 
+		else 
+		{
+			return false;
+		}
+	}
+
 }

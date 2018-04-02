@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMove : GridMovement {
+public class PlayerMove : GridMovement 
+{
 
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
 		Init(); 
 	}
 
@@ -13,7 +15,13 @@ public class PlayerMove : GridMovement {
 	void Update () {
 		Debug.DrawRay (transform.position, transform.forward, Color.red);
 
-		if (!moving) {
+		if (!turn) 
+		{
+			return;
+		}
+
+		if (!moving) 
+		{
 			FindPossibleTiles ();
 			GetInput();
 
