@@ -69,14 +69,17 @@ public class Tile : MonoBehaviour {
 		foreach (Collider item in colliders) 
 		{
 			Tile tile = item.GetComponent<Tile> ();
+			//check for neighboring tile and that it is walkable
 			if (tile != null && tile.walkable) 
 			{
-				RaycastHit hit;
-				if (!Physics.Raycast(tile.transform.position, Vector3.up, out hit, 1)) 
-				{
+				//RaycastHit hit;
+				//the following checks to see if the tile is occupied
+				//if (!Physics.Raycast(tile.transform.position, Vector3.up, out hit, 1)) 
+				//{
 					//adjacencyList.Add(tile);
-					return tile;
-				}
+					//return tile;
+				//}
+				return tile;
 
 			}
 		}

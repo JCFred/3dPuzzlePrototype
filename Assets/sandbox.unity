@@ -2104,7 +2104,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1926748485}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.3498333, y: 1.48, z: 4.3400927}
+  m_LocalPosition: {x: -1.3498333, y: 1.4, z: 3.3400924}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2179,6 +2179,7 @@ MonoBehaviour:
   jumpHeight: 2
   moveSpeed: 2
   currentTile: {fileID: 0}
+  needToMove: 0
 --- !u!1 &2038519016
 GameObject:
   m_ObjectHideFlags: 0
